@@ -5,7 +5,7 @@ import { OnboardComponent } from './onboard/onboard.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login' },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
   { path: 'onboard', component: OnboardComponent }
 ];
 

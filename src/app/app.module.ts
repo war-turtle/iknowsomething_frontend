@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { AppMaterialModule } from './app-material/app-material.module';
 import {
   SocialLoginModule,
   AuthServiceConfig,
@@ -38,7 +37,6 @@ export function getAuthServiceConfigs() {
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AppMaterialModule,
     SocialLoginModule
   ],
   providers: [{

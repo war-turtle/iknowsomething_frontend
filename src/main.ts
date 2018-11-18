@@ -6,6 +6,8 @@ import { environment } from './environments/environment';
 
 // For animations
 import 'hammerjs';
+// For materialize css
+import 'materialize-css/dist/js/materialize.min.js';
 
 if (environment.production) {
   enableProdMode();
