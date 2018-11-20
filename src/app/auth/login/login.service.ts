@@ -5,7 +5,11 @@ import { environment } from 'src/environments/environment';
 
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  })
 };
 
 @Injectable()
@@ -17,6 +21,6 @@ export class LoginService {
     private http: HttpClient) { }
 
   login(token) {
-    return this.http.post(this.apiUrl + '/auth/login', {token}, httpOptions);
+    return this.http.post(this.apiUrl + '/auth/login', { token }, httpOptions);
   }
 }
