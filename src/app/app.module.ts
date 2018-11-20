@@ -10,6 +10,7 @@ import {
   AuthServiceConfig,
   GoogleLoginProvider,
 } from 'angular-6-social-login';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -27,6 +28,7 @@ export function getAuthServiceConfigs() {
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
