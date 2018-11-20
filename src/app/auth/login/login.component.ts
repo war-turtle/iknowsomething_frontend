@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {
   AuthService,
-  FacebookLoginProvider,
   GoogleLoginProvider
 } from 'angular-6-social-login';
 
+declare const M;
 
 @Component({
   selector: 'app-login',
@@ -22,18 +22,18 @@ export class LoginComponent implements OnInit {
 
   public socialSignIn(socialPlatform: string) {
     let socialPlatformProvider;
-    if (socialPlatform === 'facebook') {
-      socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
-    } else if (socialPlatform === 'google') {
+    if (socialPlatform === 'google') {
       socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
     }
 
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
-        console.log(socialPlatform + ' sign in data : ', userData);
-        // Now sign-in with userData
-        // ...
-
+        if (userData.email.split('@')[1] === 'nitkkr.ac.in') {
+          console.log('yes');
+          M.toast({html: 'Successfully Logged In'});
+        } else {
+          M.toast({html: 'Please Login With NIT KKR Domain'});
+        }
       }
     );
   }
