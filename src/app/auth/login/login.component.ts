@@ -1,20 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import {
   AuthService,
-  FacebookLoginProvider,
   GoogleLoginProvider
 } from 'angular-6-social-login';
+import { LoginService } from './login.service';
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  providers: [LoginService]
 })
 export class LoginComponent implements OnInit {
 
   constructor(
-    private socialAuthService: AuthService
+    private socialAuthService: AuthService,
+    private loginService: LoginService
   ) { }
 
   ngOnInit() {
@@ -22,18 +24,16 @@ export class LoginComponent implements OnInit {
 
   public socialSignIn(socialPlatform: string) {
     let socialPlatformProvider;
-    if (socialPlatform === 'facebook') {
-      socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
-    } else if (socialPlatform === 'google') {
+    if (socialPlatform === 'google') {
       socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
     }
 
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
-        console.log(socialPlatform + ' sign in data : ', userData);
-        // Now sign-in with userData
-        // ...
-
+        this.loginService.login(userData.idToken)
+          .subscribe(res => {
+            console.log(res);
+          });
       }
     );
   }
