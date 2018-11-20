@@ -5,6 +5,7 @@ import {
 } from 'angular-6-social-login';
 import { LoginService } from './login.service';
 
+declare const M;
 
 @Component({
   selector: 'app-login',
@@ -30,10 +31,15 @@ export class LoginComponent implements OnInit {
 
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
-        this.loginService.login(userData.idToken)
-          .subscribe(res => {
-            console.log(res);
-          });
+        if (userData.email.split('@')[1] === 'nitkkr.ac.in') {
+          this.loginService.login(userData.idToken)
+            .subscribe(res => {
+              console.log(res);
+            });
+          M.toast({ html: 'Successfully Logged In' });
+        } else {
+          M.toast({ html: 'Please Login With NIT KKR Domain' });
+        }
       }
     );
   }

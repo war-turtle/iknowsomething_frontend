@@ -5,3 +5,24 @@
 html{
 	font-family: 'Cabin';
 }
+
+#toast-container {
+  top: 10%;
+  right: 7%;
+  bottom: auto !important;
+  left: auto !important;
+}
+
+.my-btn {
+	background-color: transparent;
+	border: 1px solid black;
+}
+
+.my-btn:hover{
+	background-color: black;
+	color: white !important;
+}
+
+.my-btn:focus{
+	background-color: transparent;
+}
