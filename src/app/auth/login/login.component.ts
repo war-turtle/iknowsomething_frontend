@@ -4,6 +4,7 @@ import {
   GoogleLoginProvider
 } from 'angular-6-social-login';
 import { LoginService } from './login.service';
+import { Router } from '@angular/router';
 
 declare const M;
 
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private socialAuthService: AuthService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -33,10 +35,13 @@ export class LoginComponent implements OnInit {
       (userData) => {
         if (userData.email.split('@')[1] === 'nitkkr.ac.in') {
           this.loginService.login(userData.idToken)
-            .subscribe(res => {
-              console.log(res);
-            });
-          M.toast({ html: 'Successfully Logged In' });
+            .subscribe((res) => {
+              M.toast({ html: 'Logging you in' });
+              this.router.navigate(['/app/profile']);
+            },
+              (err) => {
+                M.toast({ html: err.message });
+              });
         } else {
           M.toast({ html: 'Please Login With NIT KKR Domain' });
         }
