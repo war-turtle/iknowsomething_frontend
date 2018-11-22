@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
         if (userData.email.split('@')[1] === 'nitkkr.ac.in') {
           this.loginService.login(userData.idToken)
             .subscribe((res) => {
-              console.log(res);
               M.toast({ html: 'Logging you in' });
               this.router.navigate(['/auth/onboard']);
             },
