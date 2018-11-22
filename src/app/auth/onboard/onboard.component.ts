@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery';
+import { NgForm } from '@angular/forms';
+import { AuthServiceClass } from '../auth.service';
 
 @Component({
   selector: 'app-onboard',
@@ -8,13 +9,15 @@ import * as $ from 'jquery';
 })
 export class OnboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private AuthService: AuthServiceClass) { }
 
   ngOnInit() {
-    $(document).ready(function () {
-      console.log($('select'));
-      $('select').formSelect();
-    });
+
+  }
+
+  onSubmit(form: NgForm) {
+    console.log(form);
+    // this.AuthService.onBoard()
   }
 
 }
