@@ -1,10 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-
 import { HttpClientModule } from '@angular/common/http';
 
 import {
@@ -12,7 +8,9 @@ import {
   AuthServiceConfig,
   GoogleLoginProvider,
 } from 'angular-6-social-login';
-import { NavbarComponent } from './shared/navbar/navbar.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -30,14 +28,14 @@ export function getAuthServiceConfigs() {
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SocialLoginModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule,
   ],
   providers: [{
     provide: AuthServiceConfig,
