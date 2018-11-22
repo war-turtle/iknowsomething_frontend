@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import {
   AuthService,
   GoogleLoginProvider
 } from 'angular-6-social-login';
-import { LoginService } from './login.service';
-import { Router } from '@angular/router';
+import { AuthServiceClass } from '../auth.service';
 
 declare const M;
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  providers: [LoginService]
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
   constructor(
     private socialAuthService: AuthService,
-    private loginService: LoginService,
+    private loginService: AuthServiceClass,
     private router: Router
   ) { }
 
