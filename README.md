@@ -5,13 +5,24 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## To Run Development Server Using Docker
 Just type
-```docker
+```bash
 docker-compose up
 ```
 
 To rebuild the image type
-```docker
+```bash
 docker-compose up --build
+```
+
+## To Run Production Docker Container
+To build image
+```bash
+docker build -t warturtle/iks-prod .
+```
+
+To run the container
+```bash
+docker run -p 80:80 --name iks-prod warturtle/iks-prod
 ```
 ## Development server
 
