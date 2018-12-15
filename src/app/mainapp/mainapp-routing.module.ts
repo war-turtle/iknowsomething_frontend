@@ -5,6 +5,8 @@ import { ProfileComponent } from './profile/profile.component';
 const routes: Routes = [
   { path: 'profile/:username', component: ProfileComponent },
   { path: 'blogs', loadChildren: './blogs/blogs.module#BlogsModule' },
+  { path: 'messages', loadChildren: './messages/messages.module#MessagesModule' },
+  { path: 'papers', loadChildren: './papers/papers.module#PapersModule' },
 ];
 
 @NgModule({

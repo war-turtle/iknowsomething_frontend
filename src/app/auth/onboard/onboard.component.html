@@ -6,38 +6,17 @@
 
       <div class="col s6">
         <label for="first_name">First Name</label>
-        <input 
-          id="first_name" 
-          type="text" 
-          class="validate"
-          ngModel 
-          name="firstName"
-          required
-        >
+        <input id="first_name" type="text" class="validate" ngModel name="firstName" required>
       </div>
-      
+
       <div class="col s6">
         <label for="last_name">Last Name</label>
-        <input 
-          id="last_name" 
-          type="text" 
-          class="validate"
-          ngModel 
-          name="lastName"
-          required
-        >
+        <input id="last_name" type="text" class="validate" ngModel name="lastName" required>
       </div>
 
       <div class="col s12">
         <label for="username">Username</label>
-        <input 
-          id="username" 
-          type="text" 
-          class="validate"
-          ngModel 
-          name="username"
-          required
-        >
+        <input id="username" type="text" class="validate" ngModel name="username" required>
       </div>
 
       <div class="col s12">
@@ -92,25 +71,12 @@
 
       <div class="col s12">
         <label for="icon_telephone">Telephone</label>
-        <input 
-          id="icon_telephone" 
-          type="number" 
-          class="validate" 
-          ngModel
-          name="number"
-          required
-        >
+        <input id="icon_telephone" type="number" class="validate" ngModel name="number" required>
       </div>
 
       <div class="col s12">
         <label for="address">Address</label>
-        <textarea 
-          id="address" 
-          class="materialize-textarea" 
-          ngModel
-          name="address"
-          required
-        >
+        <textarea id="address" class="materialize-textarea" ngModel name="address" required>
         </textarea>
       </div>
 
@@ -157,7 +123,7 @@
           <option value="other">Other</option>
         </select>
       </div>
-      
+
     </div>
 
     <button class="btn z-depth-0 my-btn black-text" [disabled]="!f.valid">Submit</button>
