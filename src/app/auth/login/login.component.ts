@@ -37,7 +37,8 @@ export class LoginComponent implements OnInit {
           this.loginService.login(userData.idToken)
             .subscribe((res) => {
               M.toast({ html: 'Logging you in' });
-              this.router.navigate(['/auth/onboard']);
+              window.sessionStorage.setItem('token', res.data.token);
+              this.router.navigate(['auth', 'onboard']);
             },
               (err) => {
                 M.toast({ html: err.message });
