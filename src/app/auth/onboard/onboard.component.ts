@@ -11,8 +11,19 @@ declare const M;
   styleUrls: ['./onboard.component.scss']
 })
 export class OnboardComponent implements OnInit {
+  firstName = '';
+  lastName = '';
+  username = '';
+  branch = '';
+  year = '';
+  number = null;
+  state = '';
 
-  constructor(private onboardService: AuthServiceClass, private router: Router) { }
+  constructor(private onboardService: AuthServiceClass, private router: Router) {
+    if (sessionStorage.getItem('token') == null) {
+      this.router.navigate(['auth', 'login']);
+    }
+  }
 
   ngOnInit() {
   }
@@ -25,11 +36,14 @@ export class OnboardComponent implements OnInit {
         token: window.sessionStorage.getItem('token'),
         ...form.value
       };
-      console.log(data);
 
       this.onboardService.onBoard(data)
         .subscribe((res) => {
-          M.toast({ html: 'Boarding you to the land of immortals' });
+          M.toast({ html: res.message });
+          if (res.data != null && res.data.token != null) {
+            sessionStorage.removeItem('token');
+            sessionStorage.setItem('token', res.data.token);
+          }
           // this.router.navigate(['']);
         }, (err) => {
           M.toast({ html: err.message });
