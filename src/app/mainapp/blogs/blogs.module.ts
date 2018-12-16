@@ -6,6 +6,7 @@ import { IndividualBlogComponent } from './individual-blog/individual-blog.compo
 import { BlogsComponent } from './blogs.component';
 import { WriteblogComponent } from './writeblog/writeblog.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { BlogsServiceClass } from './blogs.service';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     BlogsRoutingModule,
     SharedModule
-  ]
+  ],
+  providers: [BlogsServiceClass]
 })
 export class BlogsModule { }

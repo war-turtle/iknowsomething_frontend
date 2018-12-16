@@ -1,10 +1,11 @@
-import { Component, Input, forwardRef, ElementRef, ViewChild, OnChanges, OnInit, OnDestroy } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
+import { Component, Input, forwardRef, ViewChild, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 declare var MediumEditor: any;
 
 @Component({
   selector: 'app-medium-editor',
+  styleUrls: ['./medium-editor.component.scss'],
   providers: [{
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => MediumEditorComponent),
@@ -12,17 +13,14 @@ declare var MediumEditor: any;
   }],
   template: `<div #host></div>`
 })
-export class MediumEditorComponent implements ControlValueAccessor, OnInit, OnDestroy, OnChanges {
+export class MediumEditorComponent implements OnInit, OnDestroy {
   @Input() options: any;
   @Input() placeholder: string;
-  el: ElementRef;
+  @Output() valueChange = new EventEmitter();
   editor: any;
   @ViewChild('host') host: any;
-  propagateChange = (_: any) => { };
 
-  constructor(el: ElementRef) {
-    this.el = el;
-  }
+  constructor() { }
 
   ngOnInit() {
     this.options = (typeof this.options === 'string') ? JSON.parse(this.options)
@@ -35,7 +33,7 @@ export class MediumEditorComponent implements ControlValueAccessor, OnInit, OnDe
     this.editor = new MediumEditor(this.host.nativeElement, this.options);
     this.editor.subscribe('editableInput', (event: any, editable: any) => {
       const value = this.editor.elements[0].innerHTML;
-      this.ngOnChanges(value);
+      this.valueChange.emit(value);
     });
   }
 
@@ -44,21 +42,4 @@ export class MediumEditorComponent implements ControlValueAccessor, OnInit, OnDe
       this.editor.destroy();
     }
   }
-
-  ngOnChanges(changes: any) {
-    this.propagateChange(changes);
-  }
-
-  writeValue(value: any) {
-    if (this.editor) {
-      if (value && value !== '') {
-        this.editor.setContent(value);
-      }
-    }
-  }
-  registerOnChange(fn: any) {
-    this.propagateChange = fn;
-  }
-  registerOnTouched(fn: any) { }
-
 }

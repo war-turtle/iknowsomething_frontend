@@ -40,11 +40,12 @@ export class OnboardComponent implements OnInit {
       this.onboardService.onBoard(data)
         .subscribe((res) => {
           M.toast({ html: res.message });
-          if (res.data != null && res.data.token != null) {
-            sessionStorage.removeItem('token');
-            sessionStorage.setItem('token', res.data.token);
+          if (res.success) {
+            if (res.data != null && res.data.token != null) {
+              sessionStorage.removeItem('token');
+              sessionStorage.setItem('token', res.data.token);
+            }
           }
-          // this.router.navigate(['']);
         }, (err) => {
           M.toast({ html: err.message });
         });
