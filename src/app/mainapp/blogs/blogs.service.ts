@@ -22,4 +22,8 @@ export class BlogsServiceClass {
   submitBlog(data) {
     return this.http.post(this.apiUrl + '/blog', { data }, httpOptions);
   }
+
+  getAllBlogs(page: number) {
+    return this.http.get(this.apiUrl + `/blog?page=${page}`, httpOptions);
+  }
 }

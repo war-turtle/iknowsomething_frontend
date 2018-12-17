@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServiceClass } from '../auth.service';
+import { response } from '../../shared/response.model';
 
 declare const M;
 
@@ -38,13 +39,14 @@ export class OnboardComponent implements OnInit {
       };
 
       this.onboardService.onBoard(data)
-        .subscribe((res) => {
+        .subscribe((res: response) => {
           M.toast({ html: res.message });
           if (res.success) {
             if (res.data != null && res.data.token != null) {
               sessionStorage.removeItem('token');
               sessionStorage.setItem('token', res.data.token);
             }
+            this.router.navigate(['app', 'blogs']);
           }
         }, (err) => {
           M.toast({ html: err.message });

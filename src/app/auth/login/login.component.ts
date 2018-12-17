@@ -6,6 +6,7 @@ import {
   GoogleLoginProvider
 } from 'angular-6-social-login';
 import { AuthServiceClass } from '../auth.service';
+import { response } from 'src/app/shared/response.model';
 
 declare const M;
 
@@ -35,7 +36,7 @@ export class LoginComponent implements OnInit {
       (userData) => {
         if (userData.email.split('@')[1] === 'nitkkr.ac.in') {
           this.loginService.login(userData.idToken)
-            .subscribe((res) => {
+            .subscribe((res: response) => {
               M.toast({ html: 'Logging you in' });
               window.sessionStorage.setItem('token', res.data.token);
               this.router.navigate(['auth', 'onboard']);
