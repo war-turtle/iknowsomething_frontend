@@ -7,7 +7,7 @@
     <h4 class="grey-text">Be the first one to write</h4>
   </div>
   <div class="card z-depth-0" *ngFor="let blog of blogs">
-    <div class="card-content">
+    <div routerLink="{{blog._id}}" class="card-content pointer">
       <span class="card-title" [innerHTML]="blog.blogTitle"></span>
       <p class="grey-text" [innerHTML]="blog.blogContent"></p>
     </div>

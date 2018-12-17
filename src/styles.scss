@@ -2,15 +2,15 @@
 @import url('https://fonts.googleapis.com/css?family=Cabin');
 @import '~materialize-css/sass/materialize.scss';
 
-html{
+html {
 	font-family: 'Cabin';
 }
 
 #toast-container {
-  top: 10%;
-  right: 7%;
-  bottom: auto !important;
-  left: auto !important;
+	top: 10%;
+	right: 7%;
+	bottom: auto !important;
+	left: auto !important;
 }
 
 .my-btn {
@@ -18,12 +18,16 @@ html{
 	border: 1px solid black;
 }
 
-.my-btn:hover{
+.my-btn:hover {
 	background-color: black;
 	color: white !important;
 }
 
-.my-btn:focus{
+.my-btn:focus {
 	background-color: transparent;
 	color: black !important;
+}
+
+.pointer {
+	cursor: pointer;
 }
