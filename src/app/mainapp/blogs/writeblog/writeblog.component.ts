@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogsServiceClass } from '../blogs.service';
+import { response } from 'src/app/shared/response.model';
 
 declare var M;
 
@@ -33,7 +34,7 @@ export class WriteblogComponent implements OnInit {
         token: sessionStorage.getItem('token'),
         title: this.title,
         content: this.content
-      }).subscribe((res) => {
+      }).subscribe((res: response) => {
         M.toast({ html: res.message });
       }, (err) => {
         M.toast({ html: err.message });

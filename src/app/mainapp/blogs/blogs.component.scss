@@ -1,0 +1,16 @@
+.card{
+  border-bottom: 1px solid grey;
+}
+
+.card-content{
+  padding: 12px;
+}
+
+.card-action{
+  border: none;
+  padding: 12px;
+  padding-top: 0px;
+  a {
+    text-transform: none !important;    
+  }
+}
