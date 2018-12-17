@@ -19,7 +19,7 @@ export class BlogsComponent implements OnInit {
       .subscribe(
         (res: response) => {
           res.data.blogs.forEach(blog => {
-            // this.blogs.push(blog);
+            this.blogs.push(blog);
           });
           console.log(this.blogs);
         },
