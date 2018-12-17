@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServiceClass } from '../auth.service';
+import { response } from '../../shared/response.model';
 
 declare const M;
 
@@ -11,8 +12,19 @@ declare const M;
   styleUrls: ['./onboard.component.scss']
 })
 export class OnboardComponent implements OnInit {
+  firstName = '';
+  lastName = '';
+  username = '';
+  branch = '';
+  year = '';
+  number = null;
+  state = '';
 
-  constructor(private onboardService: AuthServiceClass, private router: Router) { }
+  constructor(private onboardService: AuthServiceClass, private router: Router) {
+    if (sessionStorage.getItem('token') == null) {
+      this.router.navigate(['auth', 'login']);
+    }
+  }
 
   ngOnInit() {
   }
@@ -25,12 +37,17 @@ export class OnboardComponent implements OnInit {
         token: window.sessionStorage.getItem('token'),
         ...form.value
       };
-      console.log(data);
 
       this.onboardService.onBoard(data)
-        .subscribe((res) => {
-          M.toast({ html: 'Boarding you to the land of immortals' });
-          // this.router.navigate(['']);
+        .subscribe((res: response) => {
+          M.toast({ html: res.message });
+          if (res.success) {
+            if (res.data != null && res.data.token != null) {
+              sessionStorage.removeItem('token');
+              sessionStorage.setItem('token', res.data.token);
+            }
+            this.router.navigate(['app', 'blogs']);
+          }
         }, (err) => {
           M.toast({ html: err.message });
         });
