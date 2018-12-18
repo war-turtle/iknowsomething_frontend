@@ -26,4 +26,8 @@ export class BlogsServiceClass {
   getAllBlogs(page: number) {
     return this.http.get(this.apiUrl + `/blog?page=${page}`, httpOptions);
   }
+
+  getBlog(id: string) {
+    return this.http.get(this.apiUrl + '/blog/' + id, httpOptions);
+  }
 }
