@@ -5,7 +5,7 @@ import { AuthGuardService } from '../guards/auth-guard.service';
 
 const routes: Routes = [
   { path: 'profile/:username', canActivate: [AuthGuardService], component: ProfileComponent },
-  { path: 'blogs',  canActivate: [AuthGuardService], loadChildren: './blogs/blogs.module#BlogsModule' },
+  { path: 'blogs', canLoad: [AuthGuardService], loadChildren: './blogs/blogs.module#BlogsModule' },
   { path: 'messages', loadChildren: './messages/messages.module#MessagesModule' },
   { path: 'papers', loadChildren: './papers/papers.module#PapersModule' },
 ];
