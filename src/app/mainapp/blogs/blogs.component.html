@@ -12,7 +12,11 @@
       <p class="grey-text" [innerHTML]="blog.blogContent"></p>
     </div>
     <div class="card-action">
-      By: <a href="#" class="black-text">{{blog.userId.username}}</a>
+      <div class="col s12">
+          <span class="right">By: <a href="#" class="black-text">{{blog.userId.username}}</a></span>
+          <a href="#" class="black-text"><i class="material-icons">favorite</i></a>
+          <a href="#" class="black-text"><i class="material-icons">message</i></a>
+      </div>
     </div>
   </div>
 </div>

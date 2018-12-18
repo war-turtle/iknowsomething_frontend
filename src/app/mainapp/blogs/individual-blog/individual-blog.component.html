@@ -4,5 +4,11 @@
       <span class="card-title center-align" [innerHTML]="blog.blogTitle"></span>
       <p class="center-align" [innerHTML]="blog.blogContent"></p>
     </div>
+    <div class="card-action">
+      <div class="col s12">
+        <a href="#!" class="black-text"><i class="material-icons">favorite</i></a>
+        <span class="right">By: <a href="#" class="black-text">{{blog.userId.username}}</a></span>
+      </div>
+    </div>
   </div>
 </div>
