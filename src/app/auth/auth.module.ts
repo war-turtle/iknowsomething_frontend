@@ -6,6 +6,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { OnboardComponent } from './onboard/onboard.component';
 import { AuthServiceClass } from './auth.service';
+import { OnBoardGuard } from './auth-onboard.guard';
 
 @NgModule({
   declarations: [LoginComponent, OnboardComponent],
@@ -14,6 +15,6 @@ import { AuthServiceClass } from './auth.service';
     AuthRoutingModule,
     FormsModule
   ],
-  providers: [ AuthServiceClass ]
+  providers: [AuthServiceClass, OnBoardGuard]
 })
 export class AuthModule { }
