@@ -27,7 +27,7 @@ export class WriteblogComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.title === '' || this.content === '') {
+    if (this.title === '' && this.content === '') {
       M.toast({ html: 'Please Enter Something Valid' });
     } else {
       this.blogService.submitBlog({

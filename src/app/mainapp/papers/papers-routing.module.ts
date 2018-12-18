@@ -5,17 +5,18 @@ import { UploadComponent } from './upload/upload.component';
 import { CourseComponent } from './course/course.component';
 import { BranchComponent } from './branch/branch.component';
 import { SemesterComponent } from './semester/semester.component';
+import { AuthGuardService } from 'src/app/guards/auth-guard.service';
 
 const routes: Routes = [
-  { path: ':course', component: CourseComponent },
-  { path: ':course/:branch', component: BranchComponent },
-  { path: ':course/:branch/:sem', component: SemesterComponent },
-  { path: ':course/:branch/:sem/:code', component: PaperViewComponent },
-  { path: 'upload', component: UploadComponent },
+  { path: ':course', canActivate: [AuthGuardService], component: CourseComponent },
+  { path: ':course/:branch', canActivate: [AuthGuardService], component: BranchComponent },
+  { path: ':course/:branch/:sem', canActivate: [AuthGuardService], component: SemesterComponent },
+  { path: ':course/:branch/:sem/:code', canActivate: [AuthGuardService], component: PaperViewComponent },
+  { path: 'upload', canActivate: [AuthGuardService], component: UploadComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PapersRoutingModule {}
+export class PapersRoutingModule { }
