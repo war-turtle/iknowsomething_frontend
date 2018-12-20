@@ -21,9 +21,6 @@ export class OnboardComponent implements OnInit {
   state = '';
 
   constructor(private onboardService: AuthServiceClass, private router: Router) {
-    if (sessionStorage.getItem('token') == null) {
-      this.router.navigate(['auth', 'login']);
-    }
   }
 
   ngOnInit() {

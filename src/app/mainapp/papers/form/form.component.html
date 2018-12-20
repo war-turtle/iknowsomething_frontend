@@ -1,0 +1,60 @@
+<div class="container">
+
+  <form class="col s12 l6 offset-l3 m8 offset-m2" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="row">
+
+      <div class="col s12">
+        <label>Select your Branch</label>
+        <select class="browser-default" [(ngModel)]="branch" name="branch" required>
+          <optgroup label="B. Tech">
+            <option value="BTech_CE">C.E</option>
+            <option value="BTech_IT">IT</option>
+            <option value="BTech_ECE">ECE</option>
+            <option value="BTech_EE">EE</option>
+            <option value="BTech_ME">ME</option>
+            <option value="BTech_PIE">PIE</option>
+          </optgroup>
+          <optgroup label="M. Tech">
+            <option value="MTech_CE">C.E</option>
+            <option value="MTech_IT">IT</option>
+            <option value="MTech_ECE">ECE</option>
+            <option value="MTech_EE">EE</option>
+            <option value="MTech_ME">ME</option>
+            <option value="MTech_PIE">PIE</option>
+          </optgroup>
+          <optgroup label="MCA">
+            <option value="MCA_CE">C.E</option>
+            <option value="MCA_IT">IT</option>
+            <option value="MCA_ECE">ECE</option>
+            <option value="MCA_EE">EE</option>
+            <option value="MCA_ME">ME</option>
+            <option value="MCA_PIE">PIE</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <div class="col s12">
+        <label>Select your semester</label>
+        <select class="browser-default" [(ngModel)]="semester" name="semester" required>
+          <option value="1">First</option>
+          <option value="2">Second</option>
+          <option value="3">Third</option>
+          <option value="4">Fourth</option>
+          <option value="5">Fifth</option>
+          <option value="6">Sixth</option>
+          <option value="7">Seventh</option>
+          <option value="8">Eighth</option>
+        </select>
+      </div>
+
+      <div class="col s12">
+        <label for="year">Enter which year</label>
+        <input id="year" class="validate" type="nubmer" [(ngModel)]="year" name="year" required>
+      </div>
+
+    </div>
+
+    <button class="btn z-depth-0 my-btn black-text" [disabled]="!f.valid">See Question Paper</button>
+  </form>
+
+</div>

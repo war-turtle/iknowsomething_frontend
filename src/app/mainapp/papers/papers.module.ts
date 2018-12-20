@@ -2,17 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PapersRoutingModule } from './papers-routing.module';
-import { PaperViewComponent } from './paper-view/paper-view.component';
+import { ChooseComponent } from './choose/choose.component';
+import { SeeComponent } from './see/see.component';
 import { UploadComponent } from './upload/upload.component';
-import { CourseComponent } from './course/course.component';
-import { BranchComponent } from './branch/branch.component';
-import { SemesterComponent } from './semester/semester.component';
+import { FormsModule } from '@angular/forms';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
-  declarations: [PaperViewComponent, UploadComponent, CourseComponent, BranchComponent, SemesterComponent],
+  declarations: [ChooseComponent, SeeComponent, UploadComponent, FormComponent],
   imports: [
     CommonModule,
-    PapersRoutingModule
+    PapersRoutingModule,
+    FormsModule
   ]
 })
 export class PapersModule { }
